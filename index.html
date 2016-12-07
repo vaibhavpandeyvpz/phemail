@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Phemail by vaibhavpandeyvpz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Phemail</h1>
+      <h2 class="project-tagline">MIME parser written in pure PHP for parsing raw emails (.eml) files.</h2>
+      <a href="https://github.com/vaibhavpandeyvpz/phemail" class="btn">View on GitHub</a>
+      <a href="https://github.com/vaibhavpandeyvpz/phemail/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/vaibhavpandeyvpz/phemail/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="vaibhavpandeyvpzphemail" class="anchor" href="#vaibhavpandeyvpzphemail" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>vaibhavpandeyvpz/phemail</h1>
+
+<p>MIME parser written in pure <a href="http://www.php.net/">PHP</a> for parsing raw emails (.eml) files.</p>
+
+<p><a href="https://github.com/vaibhavpandeyvpz/phemail/releases"><img src="https://img.shields.io/github/release/vaibhavpandeyvpz/phemail.svg?style=flat-square" alt="Latest Version"></a> <a href="https://travis-ci.org/vaibhavpandeyvpz/phemail"><img src="https://img.shields.io/travis/vaibhavpandeyvpz/phemail/master.svg?style=flat-square" alt="Build Status"></a> <a href="https://insight.sensiolabs.com/projects/c6f2e35b-2349-452e-b696-17849c5695e0"><img src="https://insight.sensiolabs.com/projects/c6f2e35b-2349-452e-b696-17849c5695e0/mini.png" alt="SensioLabsInsight"></a> <a href="https://codeclimate.com/github/vaibhavpandeyvpz/phemail/badges"><img src="https://codeclimate.com/github/vaibhavpandeyvpz/phemail/badges/gpa.svg" alt=""></a> <a href="https://codeclimate.com/github/vaibhavpandeyvpz/phemail/badges"><img src="https://codeclimate.com/github/vaibhavpandeyvpz/phemail/badges/coverage.svg" alt=""></a> <a href="https://scrutinizer-ci.com/g/vaibhavpandeyvpz/phemail/?branch=master"><img src="https://scrutinizer-ci.com/g/vaibhavpandeyvpz/phemail/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality"></a> <a href="https://coveralls.io/github/vaibhavpandeyvpz/phemail?branch=master"><img src="https://coveralls.io/repos/github/vaibhavpandeyvpz/phemail/badge.svg?branch=master" alt="Coverage Status"></a> <a href="https://packagist.org/packages/vaibhavpandeyvpz/phemail"><img src="https://img.shields.io/packagist/dt/vaibhavpandeyvpz/phemail.svg?style=flat-square" alt="Total Downloads"></a> <a href="LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License"></a></p>
+
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h2>
+
+<div class="highlight highlight-source-shell"><pre>composer require vaibhavpandeyvpz/phemail</pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$email</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">&lt;&lt;&lt;</span><span class="pl-k">EML</span></span></span>
+<span class="pl-s1"><span class="pl-s">Mime-Version: 1.0</span></span>
+<span class="pl-s1"><span class="pl-s">Message-Id: &lt;6B7EC235-5B17-4CA8-B2B8-39290DEB43A3@vaibhavpandey.com&gt;</span></span>
+<span class="pl-s1"><span class="pl-s">From: Vaibhav Pandey &lt;contact@vaibhavpandey.com&gt;</span></span>
+<span class="pl-s1"><span class="pl-s">To: Vaibhav Pandey &lt;me@vaibhavpandey.com&gt;</span></span>
+<span class="pl-s1"><span class="pl-s">Subject: Testing simple email</span></span>
+<span class="pl-s1"><span class="pl-s">Date: Sat, 22 Nov 2008 15:04:59 +1100</span></span>
+<span class="pl-s1"><span class="pl-s">Content-Type: text/plain; charset=US-ASCII; format=flowed</span></span>
+<span class="pl-s1"><span class="pl-s">Content-Transfer-Encoding: 7bit</span></span>
+<span class="pl-s1"><span class="pl-s"></span></span>
+<span class="pl-s1"><span class="pl-s"></span></span>
+<span class="pl-s1"><span class="pl-s">This is simple as f*** plain text email message.</span></span>
+<span class="pl-s1"><span class="pl-s"></span></span>
+<span class="pl-s1"><span class="pl-s">Regards,</span></span>
+<span class="pl-s1"><span class="pl-s">Vaibhav Pandey</span></span>
+<span class="pl-s1"><span class="pl-s"><span class="pl-k">EML</span></span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$parser</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">Phemail\</span><span class="pl-c1">MessageParser</span>();</span>
+<span class="pl-s1"><span class="pl-smi">$message</span> <span class="pl-k">=</span> <span class="pl-smi">$parser</span><span class="pl-k">-&gt;</span>parse(<span class="pl-smi">$email</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-smi">$message</span><span class="pl-k">-&gt;</span>getHeaderValue(<span class="pl-s"><span class="pl-pds">'</span>subject<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-c"># outputs 'Testing simple email'</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-smi">$message</span><span class="pl-k">-&gt;</span>getHeaderValue(<span class="pl-s"><span class="pl-pds">'</span>date<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-c"># outputs 'Sat, 22 Nov 2008 15:04:59 +1100'</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-smi">$message</span><span class="pl-k">-&gt;</span>getHeaderValue(<span class="pl-s"><span class="pl-pds">'</span>content-type<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-c"># outputs 'text/plain'</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-smi">$message</span><span class="pl-k">-&gt;</span>getHeaderAttribute(<span class="pl-s"><span class="pl-pds">'</span>content-type<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>charset<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-c"># outputs 'US-ASCII'</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-smi">$message</span><span class="pl-k">-&gt;</span>getContents();</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">/**</span></span>
+<span class="pl-s1"><span class="pl-c"> * @desc To extract emails from headers, you could use any RFC 822</span></span>
+<span class="pl-s1"><span class="pl-c"> *      internet address parser e.g., pear/mail.</span></span>
+<span class="pl-s1"><span class="pl-c"> */</span></span>
+<span class="pl-s1"><span class="pl-smi">$addresses</span> <span class="pl-k">=</span> (<span class="pl-k">new</span> <span class="pl-c1">Mail_RFC822</span>())<span class="pl-k">-&gt;</span>parseAddressList(<span class="pl-smi">$message</span><span class="pl-k">-&gt;</span>getHeaderValue(<span class="pl-s"><span class="pl-pds">'</span>to<span class="pl-pds">'</span></span>));</span>
+<span class="pl-s1"><span class="pl-k">foreach</span> (<span class="pl-smi">$addresses</span> <span class="pl-k">as</span> <span class="pl-smi">$address</span>) {</span>
+<span class="pl-s1">    <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>Name: <span class="pl-pds">'</span></span>, <span class="pl-smi">$address</span><span class="pl-k">-&gt;</span><span class="pl-smi">personal</span>, <span class="pl-s"><span class="pl-pds">'</span>&lt;br&gt;<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>Email: <span class="pl-pds">'</span></span>, <span class="pl-smi">$address</span><span class="pl-k">-&gt;</span><span class="pl-smi">mailbox</span>, <span class="pl-s"><span class="pl-pds">'</span>@<span class="pl-pds">'</span></span>, <span class="pl-smi">$address</span><span class="pl-k">-&gt;</span><span class="pl-smi">host</span>;</span>
+<span class="pl-s1">}</span></pre></div>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>See <a href="https://github.com/vaibhavpandeyvpz/phemail/blob/master/LICENSE.md">LICENSE.md</a> file.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/vaibhavpandeyvpz/phemail">Phemail</a> is maintained by <a href="https://github.com/vaibhavpandeyvpz">vaibhavpandeyvpz</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
