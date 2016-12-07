@@ -1,0 +1,31 @@
+after_success:
+    - travis_retry php vendor/bin/coveralls -x build/logs/coverage.xml
+    - export CODECLIMATE_REPO_TOKEN=3e36b965e9e120d11a3c822f75e5f8b1c00533bf3b4615861e9774807d1440eb
+    - travis_retry php vendor/bin/test-reporter --coverage-report=build/logs/coverage.xml
+
+before_install:
+    - travis_retry composer self-update
+
+branches:
+    only:
+        - master
+
+cache:
+    directories:
+        - $HOME/.composer/cache
+
+install:
+    - travis_retry composer install --dev --no-interaction --prefer-dist
+
+language: php
+
+php:
+    - 5.3
+    - 5.4
+    - 5.5
+    - 5.6
+    - 7.0
+
+script:
+    - mkdir -p build/logs
+    - vendor/bin/phpunit
