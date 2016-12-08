@@ -34,28 +34,30 @@
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
 
+<p>Suppose this is your email file named <code>sample.eml</code>:</p>
+
+<pre lang="eml"><code>Mime-Version: 1.0
+Message-Id: &lt;6B7EC235-5B17-4CA8-B2B8-39290DEB43A3@vaibhavpandey.com&gt;
+From: Vaibhav Pandey &lt;contact@vaibhavpandey.com&gt;
+To: Vaibhav Pandey &lt;me@vaibhavpandey.com&gt;
+Subject: Testing simple email
+Date: Sat, 22 Nov 2008 15:04:59 +1100
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Content-Transfer-Encoding: 7bit
+
+
+This is simple as f*** plain text email message.
+
+Regards,
+Vaibhav Pandey
+</code></pre>
+
+<p>You can read &amp; parse it as follows:</p>
+
 <div class="highlight highlight-text-html-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
 <span class="pl-s1"></span>
-<span class="pl-s1"><span class="pl-smi">$email</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">&lt;&lt;&lt;</span><span class="pl-k">EML</span></span></span>
-<span class="pl-s1"><span class="pl-s">Mime-Version: 1.0</span></span>
-<span class="pl-s1"><span class="pl-s">Message-Id: &lt;6B7EC235-5B17-4CA8-B2B8-39290DEB43A3@vaibhavpandey.com&gt;</span></span>
-<span class="pl-s1"><span class="pl-s">From: Vaibhav Pandey &lt;contact@vaibhavpandey.com&gt;</span></span>
-<span class="pl-s1"><span class="pl-s">To: Vaibhav Pandey &lt;me@vaibhavpandey.com&gt;</span></span>
-<span class="pl-s1"><span class="pl-s">Subject: Testing simple email</span></span>
-<span class="pl-s1"><span class="pl-s">Date: Sat, 22 Nov 2008 15:04:59 +1100</span></span>
-<span class="pl-s1"><span class="pl-s">Content-Type: text/plain; charset=US-ASCII; format=flowed</span></span>
-<span class="pl-s1"><span class="pl-s">Content-Transfer-Encoding: 7bit</span></span>
-<span class="pl-s1"><span class="pl-s"></span></span>
-<span class="pl-s1"><span class="pl-s"></span></span>
-<span class="pl-s1"><span class="pl-s">This is simple as f*** plain text email message.</span></span>
-<span class="pl-s1"><span class="pl-s"></span></span>
-<span class="pl-s1"><span class="pl-s">Regards,</span></span>
-<span class="pl-s1"><span class="pl-s">Vaibhav Pandey</span></span>
-<span class="pl-s1"><span class="pl-s"><span class="pl-k">EML</span></span>;</span>
-<span class="pl-s1"></span>
-<span class="pl-s1"></span>
 <span class="pl-s1"><span class="pl-smi">$parser</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">Phemail\</span><span class="pl-c1">MessageParser</span>();</span>
-<span class="pl-s1"><span class="pl-smi">$message</span> <span class="pl-k">=</span> <span class="pl-smi">$parser</span><span class="pl-k">-&gt;</span>parse(<span class="pl-smi">$email</span>);</span>
+<span class="pl-s1"><span class="pl-smi">$message</span> <span class="pl-k">=</span> <span class="pl-smi">$parser</span><span class="pl-k">-&gt;</span>parse(<span class="pl-c1">__DIR__</span> <span class="pl-k">.</span> <span class="pl-s"><span class="pl-pds">'</span>/sample.eml<span class="pl-pds">'</span></span>);</span>
 <span class="pl-s1"></span>
 <span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-smi">$message</span><span class="pl-k">-&gt;</span>getHeaderValue(<span class="pl-s"><span class="pl-pds">'</span>subject<span class="pl-pds">'</span></span>);</span>
 <span class="pl-s1"><span class="pl-c"># outputs 'Testing simple email'</span></span>
