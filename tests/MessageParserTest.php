@@ -32,8 +32,7 @@ class MessageParserTest extends \PHPUnit_Framework_TestCase
 
     public function testPlainEmail()
     {
-        $payload = file_get_contents(__DIR__ . '/../sample/plain.eml');
-        $message = $this->parser->parse($payload);
+        $message = $this->parser->parse(__DIR__ . '/../sample/plain.eml');
         $this->assertTrue($message->isText());
         $this->assertFalse($message->isMultiPart());
         $this->assertCount(8, $message->getHeaders());
@@ -50,8 +49,7 @@ class MessageParserTest extends \PHPUnit_Framework_TestCase
 
     public function testMultiPartEmail()
     {
-        $payload = file_get_contents(__DIR__ . '/../sample/multipart.eml');
-        $message = $this->parser->parse($payload);
+        $message = $this->parser->parse(__DIR__ . '/../sample/multipart.eml');
         $this->assertTrue($message->isMultiPart());
         $this->assertFalse($message->isText());
         $this->assertCount(7, $message->getHeaders());

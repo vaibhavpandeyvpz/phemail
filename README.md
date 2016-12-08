@@ -11,10 +11,9 @@ composer require vaibhavpandeyvpz/phemail
 
 Usage
 ---
-```php
-<?php
+Suppose this is your email file named `sample.eml`:
 
-$email = <<<EML
+```eml
 Mime-Version: 1.0
 Message-Id: <6B7EC235-5B17-4CA8-B2B8-39290DEB43A3@vaibhavpandey.com>
 From: Vaibhav Pandey <contact@vaibhavpandey.com>
@@ -29,11 +28,15 @@ This is simple as f*** plain text email message.
 
 Regards,
 Vaibhav Pandey
-EML;
+```
 
+You can read & parse it as follows:
+
+```php
+<?php
 
 $parser = new Phemail\MessageParser();
-$message = $parser->parse($email);
+$message = $parser->parse(__DIR__ . '/sample.eml');
 
 echo $message->getHeaderValue('subject');
 # outputs 'Testing simple email'

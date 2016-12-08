@@ -24,7 +24,7 @@ class MessageParser implements MessageParserInterface
 
     const REGEX_HEADER_LINE_EXTENDED = '~^\s+(?<content>.*)$~';
 
-    const REGEX_ATTRIBUTE = '~[;\s]+(?<name>[^=]+)=(?:["])?(?<value>[^;"]+)(?:["])?~m';
+    const REGEX_ATTRIBUTE = '~[;\s]+(?<name>[^=]+)=(?:["])?(?<value>[^;"]+)(?:["])?~';
 
     const REGEX_BOUNDARY = '~^[-]{2}(?<boundary>.*[^-]{2})(?<end>[-]{2})?$~';
 
@@ -34,7 +34,7 @@ class MessageParser implements MessageParserInterface
     public function parse($payload)
     {
         if (is_string($payload)) {
-            $iterator = new \ArrayIterator(explode("\r\n", $payload));
+            $iterator = new \ArrayIterator(file($payload, FILE_IGNORE_NEW_LINES));
         } elseif (is_array($payload)) {
             $iterator = new \ArrayIterator($payload);
         } elseif ($payload instanceof \Iterator) {
@@ -135,6 +135,6 @@ class MessageParser implements MessageParserInterface
             }
             $lines->next();
         }
-        return implode("\r\n", $contents);
+        return implode(PHP_EOL, $contents);
     }
 }
