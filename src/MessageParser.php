@@ -98,18 +98,19 @@ class MessageParser implements MessageParserInterface
      * @param MessagePart $part
      * @return MessagePart
      */
-    protected function parseMessage(\Iterator $lines, MessagePart $part)
+    protected function parseMessage(\Iterator $lines, MessagePart $part, $boundary=null)
     {
         while ($lines->valid()) {
             $line = $lines->current();
             $lines->next();
             if ($part->isMultiPart()) {
-                if (preg_match(self::REGEX_BOUNDARY, $line, $matches)) {
+                $boundary = $part->getHeaderAttribute("content-type", "boundary");
+                if (preg_match(self::REGEX_BOUNDARY, $line, $matches) && $matches['boundary']===$boundary) {
                     if (array_key_exists('end', $matches)) {
                         break;
                     }
                     $sub = $this->parseHeaders($lines, $sub = new MessagePart());
-                    $sub = $this->parseMessage($lines, $sub);
+                    $sub = $this->parseMessage($lines, $sub, $boundary);
                     $part = $part->withPart($sub);
                 }
             } else {
@@ -123,12 +124,12 @@ class MessageParser implements MessageParserInterface
      * @param \Iterator $lines
      * @return string
      */
-    protected function parseContent(\Iterator $lines)
+    protected function parseContent(\Iterator $lines, $boundary)
     {
         $contents = array();
         while ($lines->valid()) {
             $line = $lines->current();
-            if (preg_match(self::REGEX_BOUNDARY, $line)) {
+            if (preg_match(self::REGEX_BOUNDARY, $line, $matches) && $matches['boundary']===$boundary) {
                 break;
             } else {
                 $contents[] = $line;
