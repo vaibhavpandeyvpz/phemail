@@ -114,7 +114,7 @@ class MessageParser implements MessageParserInterface
                     $part = $part->withPart($sub);
                 }
             } else {
-                return $part->withContents($this->parseContent($lines));
+                return $part->withContents($this->parseContent($lines, $boundary));
             }
         }
         return $part;
