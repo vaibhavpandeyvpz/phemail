@@ -57,7 +57,6 @@ class MessageParser implements MessageParserInterface
             if (empty($line)) {
                 break;
             }
-			//echo "LINE: $line...";
             if (preg_match(self::REGEX_HEADER_LINE, $line, $matches)) {
                 while ($lines->valid()) {
                     $lines->next();
@@ -129,7 +128,7 @@ class MessageParser implements MessageParserInterface
         while ($lines->valid()) {
             $line = $lines->current();
             $trimmed = trim($line);
-            if ($trimmed === "--$boundary" || $trimmed === "--$boundary--")
+            if ($boundary && ($trimmed === "--$boundary" || $trimmed === "--$boundary--"))
                 break;
             else
                 $contents[] = $line;
