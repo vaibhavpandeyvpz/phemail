@@ -26,8 +26,6 @@ class MessageParser implements MessageParserInterface
 
     const REGEX_ATTRIBUTE = '~[;\s]+(?<name>[^=]+)=(?:["])?(?<value>[^;"]+)(?:["])?~';
 
-    const REGEX_BOUNDARY = '~^[-]{2}(?<boundary>.*[^-]{2})(?<end>[-]{2})?$~';
-
     /**
      * {@inheritdoc}
      */
@@ -59,6 +57,7 @@ class MessageParser implements MessageParserInterface
             if (empty($line)) {
                 break;
             }
+			//echo "LINE: $line...";
             if (preg_match(self::REGEX_HEADER_LINE, $line, $matches)) {
                 while ($lines->valid()) {
                     $lines->next();
@@ -71,6 +70,7 @@ class MessageParser implements MessageParserInterface
                 }
                 $matches['name'] = strtolower($matches['name']);
                 $header = new Header();
+                
                 switch ($matches['name']) {
                     case 'content-disposition':
                     case 'content-type':
@@ -90,6 +90,7 @@ class MessageParser implements MessageParserInterface
                 $lines->next();
             }
         }
+        //echo "----------------------------\n";
         return $part;
     }
 
@@ -100,24 +101,22 @@ class MessageParser implements MessageParserInterface
      */
     protected function parseMessage(\Iterator $lines, MessagePart $part, $boundary=null)
     {
-        while ($lines->valid()) {
-            $line = $lines->current();
-            $lines->next();
-            if ($part->isMultiPart()) {
-                $boundary = $part->getHeaderAttribute("content-type", "boundary");
-                if (preg_match(self::REGEX_BOUNDARY, $line, $matches) && $matches['boundary']===$boundary) {
-                    if (array_key_exists('end', $matches)) {
-                        break;
-                    }
+        if ($part->isMultiPart()) {
+            $boundary = $part->getHeaderAttribute("content-type", "boundary");
+            while ($lines->valid()) {
+                $line = trim($lines->current());
+                $lines->next();
+                if ($line === "--$boundary") {
                     $sub = $this->parseHeaders($lines, $sub = new MessagePart());
                     $sub = $this->parseMessage($lines, $sub, $boundary);
                     $part = $part->withPart($sub);
+                } elseif ($line === "--$boundary--") {
+                    break;
                 }
-            } else {
-                return $part->withContents($this->parseContent($lines, $boundary));
             }
+            return $part;
         }
-        return $part;
+        return $part->withContents($this->parseContent($lines, $boundary));
     }
 
     /**
@@ -129,11 +128,11 @@ class MessageParser implements MessageParserInterface
         $contents = array();
         while ($lines->valid()) {
             $line = $lines->current();
-            if (preg_match(self::REGEX_BOUNDARY, $line, $matches) && $matches['boundary']===$boundary) {
+            $trimmed = trim($line);
+            if ($trimmed === "--$boundary" || $trimmed === "--$boundary--")
                 break;
-            } else {
+            else
                 $contents[] = $line;
-            }
             $lines->next();
         }
         return implode(PHP_EOL, $contents);
