@@ -47,7 +47,12 @@ interface MessagePartInterface
      * @return bool
      */
     public function isMultiPart();
-
+    
+    /**
+     * @return bool
+     */
+    public function isMessage();
+    
     /**
      * @return bool
      */
@@ -66,10 +71,10 @@ interface MessagePartInterface
     /**
      * @return MessagePartInterface[]
      */
-    public function getAttachments();
+    public function getAttachments($recursive=False);
 
     /**
      * @return MessagePartInterface[]
      */
-    public function getParts();
+    public function getParts($recursive=False);
 }

@@ -11,6 +11,8 @@
 
 namespace Phemail\tests;
 
+#include "./vendor/autoload.php";
+
 use Phemail\MessageParser;
 use Phemail\MessageParserInterface;
 
@@ -50,6 +52,9 @@ class MessageParserTest extends \PHPUnit_Framework_TestCase
     public function testMultiPartEmail()
     {
         $message = $this->parser->parse(__DIR__ . '/../sample/multipart.eml');
+        echo "ATTACHMENTS: ".count($message->getAttachments(true))."\n";
+        foreach ($message->getParts(true) as $part)
+            echo "PART: ".$part->getContentType()."\n";
         $this->assertTrue($message->isMultiPart());
         $this->assertFalse($message->isText());
         $this->assertCount(7, $message->getHeaders());

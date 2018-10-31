@@ -89,7 +89,6 @@ class MessageParser implements MessageParserInterface
                 $lines->next();
             }
         }
-        //echo "----------------------------\n";
         return $part;
     }
 
@@ -114,8 +113,13 @@ class MessageParser implements MessageParserInterface
                 }
             }
             return $part;
-        }
-        return $part->withContents($this->parseContent($lines, $boundary));
+        } else if ($part->isMessage()) {
+            $lines->next();
+            $sub = $this->parseHeaders($lines, $sub = new MessagePart());
+            $sub = $this->parseMessage($lines, $sub, $boundary);
+            return $part->withPart($sub);
+        } else
+            return $part->withContents($this->parseContent($lines, $boundary));
     }
 
     /**
@@ -128,12 +132,13 @@ class MessageParser implements MessageParserInterface
         while ($lines->valid()) {
             $line = $lines->current();
             $trimmed = trim($line);
-            if ($boundary && ($trimmed === "--$boundary" || $trimmed === "--$boundary--"))
-                break;
-            else
+            if (is_null($boundary) || ($trimmed !== "--$boundary" && $trimmed !== "--$boundary--"))
                 $contents[] = $line;
+            else
+                break;
             $lines->next();
         }
         return implode(PHP_EOL, $contents);
     }
+    
 }
