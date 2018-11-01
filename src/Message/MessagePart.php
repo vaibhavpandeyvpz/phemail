@@ -138,8 +138,9 @@ class MessagePart implements MessagePartInterface
     public function getParts($recursive=False)
     {
         $ret = $this->parts;
-        foreach($this->parts as $part)
-            $ret = array_merge($ret, $part->getParts($recursive));
+        if ($recursive)
+            foreach($this->parts as $part)
+                $ret = array_merge($ret, $part->getParts(true));
         return $ret;
     }
 
@@ -164,8 +165,9 @@ class MessagePart implements MessagePartInterface
     public function getAttachments($recursive=False)
     {
         $ret = $this->attachments;
-        foreach ($this->parts as $part)
-            $ret = array_merge($ret, $part->getAttachments($recursive));
+        if ($recursive)
+            foreach ($this->parts as $part)
+                $ret = array_merge($ret, $part->getAttachments(true));
         return $ret;
     }
     
