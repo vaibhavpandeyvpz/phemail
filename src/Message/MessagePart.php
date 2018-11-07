@@ -100,6 +100,9 @@ class MessagePart implements MessagePartInterface
         return stripos($this->getContentType(), 'multipart/') === 0;
     }
     
+    /**
+     * {@inheritdoc}
+     */
     public function isMessage()
     {
         return stripos($this->getContentType(), 'message/') === 0;

@@ -1,7 +1,7 @@
 Subject: Certified Email
 Message-ID: <opec228.20181011171020.22547.05.1.09@pec-email.com>
-To: magicleadersrl@registerpec.it
-From: "Per conto di: bfservizi@pec.bfservizi.com" <posta-certificata@pec-email.com>
+To: certified@registerpec.it
+From: posta-certificata@pec-email.com
 MIME-Version: 1.0
 Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha256; boundary="----------=_1539270648-22547-9"
 
@@ -18,38 +18,37 @@ Content-Transfer-Encoding: quoted-printable
 
 Messaggio di posta certificata
 Il giorno 11/10/2018 alle ore 17:10:45 (+0200) il messaggio
-"Contratti relativi e sviluppo piattaforma Magic Expo per gruppo BolognaFie=
-re" =E8 stato inviato da "bfservizi@pec.bfservizi.com"
+"Contratti e Documentazione" =E8 stato inviato da "services@pec.services.com"
 indirizzato a:
-magicleadersrl@registerpec.it
+certified@registerpec.it
 Il messaggio originale =E8 incluso in allegato.
 Identificativo del messaggio: opec228.20181011171020.22547.05.1.09@pec-emai=
 l.com
 
 ------------=_1539270645-22547-8
-Content-Type: application/xml; name="daticert.xml"
-Content-Disposition: inline; filename="daticert.xml"
+Content-Type: application/xml; name="cert.xml"
+Content-Disposition: inline; filename="cert.xml"
 Content-Transfer-Encoding: base64
 
-PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHBvc3Rh
-Y2VydCB0aXBvPSJwb3N0YS1jZXJ0aWZpY2F0YSIgZXJyb3JlPSJuZXNzdW5v
-Ij4KICAgIDxpbnRlc3RhemlvbmU+CiAgICAgICAgPG1pdHRlbnRlPmJmc2Vy
-dml6aUBwZWMuYmZzZXJ2aXppLmNvbTwvbWl0dGVudGU+CiAgICAgICAgPGRl
-c3RpbmF0YXJpIHRpcG89ImNlcnRpZmljYXRvIj5tYWdpY2xlYWRlcnNybEBy
-ZWdpc3RlcnBlYy5pdDwvZGVzdGluYXRhcmk+CiAgICAgICAgPHJpc3Bvc3Rl
-PiZxdW90O0JGIFNlcnZpemkgcy5yLmwuJnF1b3Q7ICZsdDtiZnNlcnZpemlA
-cGVjLmJmc2Vydml6aS5jb208L3Jpc3Bvc3RlPgogICAgICAgIDxvZ2dldHRv
-PkNvbnRyYXR0aSByZWxhdGl2aSBlIHN2aWx1cHBvIHBpYXR0YWZvcm1hIE1h
-Z2ljIEV4cG8gcGVyIGdydXBwbyBCb2xvZ25hRmllcmU8L29nZ2V0dG8+CiAg
-ICA8L2ludGVzdGF6aW9uZT4KICAgIDxkYXRpPgogICAgICAgIDxnZXN0b3Jl
-LWVtaXR0ZW50ZT5SZWdpc3Rlci5pdCBTLnAuQS48L2dlc3RvcmUtZW1pdHRl
-bnRlPgogICAgICAgIDxkYXRhIHpvbmE9IiswMjAwIj4KICAgICAgICAgICAg
-PGdpb3Jubz4xMS8xMC8yMDE4PC9naW9ybm8+CiAgICAgICAgICAgIDxvcmE+
-MTc6MTA6NDU8L29yYT4KICAgICAgICA8L2RhdGE+CiAgICAgICAgPGlkZW50
-aWZpY2F0aXZvPm9wZWMyMjguMjAxODEwMTExNzEwMjAuMjI1NDcuMDUuMS4w
-OUBwZWMtZW1haWwuY29tPC9pZGVudGlmaWNhdGl2bz4KICAgICAgICA8bXNn
-aWQ+Jmx0Ozk4MzA0OTUwNi44NTkyOTguMTUzOTI3MDEzOTg5MEB3d3cucGVj
-Lm5ldCZndDs8L21zZ2lkPgogICAgICAgIDxyaWNldnV0YSB0aXBvPSJjb21w
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 bGV0YSIgLz4KICAgIDwvZGF0aT4KPC9wb3N0YWNlcnQ+Cg==
 
 ------------=_1539270645-22547-8
@@ -57,19 +56,9 @@ Content-Type: message/rfc822; name="postacert.eml"
 Content-Disposition: inline; filename="postacert.eml"
 Content-Transfer-Encoding: 7bit
 
-Return-path: <bfservizi@pec.bfservizi.com>
-Received: from [172.16.57.13] (port=56527 helo=pecox03.it.dadapec)
-	by pec09.register.it with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.72)
-	(envelope-from <bfservizi@pec.bfservizi.com>)
-	id 1gAcTk-0003de-DV
-	for magicleadersrl@registerpec.it; Thu, 11 Oct 2018 17:02:21 +0200
-Date: Thu, 11 Oct 2018 17:02:19 +0200 (CEST)
-From: "BF Servizi s.r.l." <bfservizi@pec.bfservizi.com>
-Reply-To: "BF Servizi s.r.l." <bfservizi@pec.bfservizi.com>
-To: magicleadersrl@registerpec.it
-Subject: Contratti relativi e sviluppo piattaforma Magic Expo per gruppo
- BolognaFiere
+From: services@pec.services.com
+To: certified@registerpec.it
+Subject: Contratti e Documentazione
 MIME-Version: 1.0
 Content-Type: multipart/mixed; 
 	boundary="----=_Part_859294_104690269.1539270139866"
@@ -92,20 +81,8 @@ Content-Transfer-Encoding: 7bit
 
 Cordiali Saluti,
 
+http://www.services.com/
 
-
-
-BF Servizi Srl - BolognaFiere Group
-
-
-Via A. Maserati 18, I-40128 Bologna
-Tel. +39.051.282811
-Fax +39.051.282810
-http://www.bfservizi.it/
-
-
-
- 
 
 ------=_Part_859295_740244190.1539270139866
 Content-Type: multipart/related; 
@@ -119,7 +96,7 @@ Content-Transfer-Encoding: 7bit
 <!DOCTYPE html>
 <html><head>
     <meta charset="UTF-8">
-</head><body><p>Cordiali Saluti,<br></p><p><br></p><div class="io-ox-signature"><p><img class="aspect-ratio" id="5b1eee54-87f7-4769-b6b8-38ea3d569844" style="max-width: 100%;" alt="" src="cid:5b1eee54-87f7-4769-b6b8-38ea3d569844"><br><br><strong>BF Servizi Srl - BolognaFiere Group</strong></p><br><p>Via A. Maserati 18, I-40128 Bologna<br>Tel. +39.051.282811<br>Fax +39.051.282810<br><a href="http://www.bfservizi.it/">www.bfservizi.it</a><br></p><br><p>&#160;<br></p></div></body></html> 
+</head><body><p>Cordiali Saluti,<br></p><p><br></p><div class="io-ox-signature"><p><img class="aspect-ratio" id="5b1eee54-87f7-4769-b6b8-38ea3d569844" style="max-width: 100%;" alt="" src="cid:5b1eee54-87f7-4769-b6b8-38ea3d569844"><br><br><strong>Services</strong></p><br><a href="http://services.it/">Services</a><br></p><br><p>&#160;<br></p></div></body></html> 
 ------=_Part_859296_911334259.1539270139866--
 
 ------=_Part_859295_740244190.1539270139866--
@@ -131,8 +108,18 @@ Content-Type: text/plain;
         format=flowed
 Content-Transfer-Encoding: 7bit
 
-This is the second part.
+This is the first part.
+------=_Part_859294_104690269.1539270139866
+Content-Type: text/plain;
+        charset=US-ASCII;
+        delsp=yes;
+        format=flowed
+Content-Transfer-Encoding: 7bit
 
+This is the second part.
+------=_Part_859294_104690269.1539270139866--
+
+------------=_1539270645-22547-8--
 ------------=_1539270648-22547-9
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Transfer-Encoding: base64

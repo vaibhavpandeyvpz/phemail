@@ -52,9 +52,6 @@ class MessageParserTest extends \PHPUnit_Framework_TestCase
     public function testMultiPartEmail()
     {
         $message = $this->parser->parse(__DIR__ . '/../sample/multipart.eml');
-        echo "ATTACHMENTS: ".count($message->getAttachments(true))."\n";
-        foreach ($message->getParts(true) as $part)
-            echo "PART: ".$part->getContentType()."\n";
         $this->assertTrue($message->isMultiPart());
         $this->assertFalse($message->isText());
         $this->assertCount(7, $message->getHeaders());
@@ -91,5 +88,28 @@ class MessageParserTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('quoted-printable', $parts[1]->getHeaderValue('content-transfer-encoding'));
         $this->assertNotEmpty($contents = $parts[1]->getContents());
         $this->assertInternalType('string', $contents);
+    }
+    
+    public function testRfc822Email() {
+        $message = $this->parser->parse(__DIR__ . '/../sample/rfc822.eml');
+        $this->assertTrue($message->isMultiPart());
+        $this->assertFalse($message->isText());        
+        $this->assertFalse($message->isText());
+        $this->assertCount(3, $message->getHeader('content-type')->getAttributes());    
+        $this->assertEmpty($contents = $message->getContents());    
+        $this->assertCount(1, $attachments = $message->getAttachments());
+        $this->assertCount(1, $parts = $message->getParts());
+        $this->assertTrue($parts[0]->isMultipart());
+        $this->assertCount(3, $parts = $parts[0]->getParts());
+        $this->assertTrue($parts[0]->isText());
+        $this->assertEquals("application/xml", $parts[1]->getContentType());
+        $this->assertTrue($parts[2]->isMessage());
+        $this->assertEmpty($parts[2]->getContents());
+        $this->assertCount(1, $parts = $parts[2]->getParts());
+        $this->assertTrue($parts[0]->isMultipart());
+        $this->assertCount(3, $parts = $parts[0]->getParts());
+        $this->assertTrue($parts[0]->isMultipart());
+        $this->assertTrue($parts[1]->isText());
+        $this->assertTrue($parts[2]->isText());
     }
 }
