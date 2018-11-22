@@ -88,6 +88,7 @@ class MessageParserTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('quoted-printable', $parts[1]->getHeaderValue('content-transfer-encoding'));
         $this->assertNotEmpty($contents = $parts[1]->getContents());
         $this->assertInternalType('string', $contents);
+        $this->assertCount(1, $message->getAttachments(true));
     }
     
     public function testRfc822Email() {
@@ -111,5 +112,7 @@ class MessageParserTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($parts[0]->isMultipart());
         $this->assertTrue($parts[1]->isText());
         $this->assertTrue($parts[2]->isText());
+        $this->assertCount(1, $message->getAttachments(true));
+        $this->assertCount(11, $message->getParts(true));
     }
 }
