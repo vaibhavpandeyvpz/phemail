@@ -99,6 +99,14 @@ class MessagePart implements MessagePartInterface
     {
         return stripos($this->getContentType(), 'multipart/') === 0;
     }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function isMessage()
+    {
+        return stripos($this->getContentType(), 'message/') === 0;
+    }
 
     /**
      * {@inheritdoc}
@@ -130,9 +138,13 @@ class MessagePart implements MessagePartInterface
     /**
      * {@inheritdoc}
      */
-    public function getParts()
+    public function getParts($recursive=False)
     {
-        return $this->parts;
+        $ret = $this->parts;
+        if ($recursive)
+            foreach($this->parts as $part)
+                $ret = array_merge($ret, $part->getParts(true));
+        return $ret;
     }
 
     /**
@@ -153,8 +165,13 @@ class MessagePart implements MessagePartInterface
     /**
      * {@inheritdoc}
      */
-    public function getAttachments()
+    public function getAttachments($recursive=False)
     {
-        return $this->attachments;
+        $ret = $this->attachments;
+        if ($recursive)
+            foreach ($this->parts as $part)
+                $ret = array_merge($ret, $part->getAttachments(true));
+        return $ret;
     }
+    
 }
