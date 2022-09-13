@@ -13,7 +13,7 @@
   "homepage": "https://github.com/francescogabbrielli/phemail",
   "keywords": ["mime", "email", "parser"],
   "license": "MIT",
-  "name": "francescogabbrielli/phemail",
+  "name": "vaibhavpandeyvpz/phemail",
   "require": {
     "php": "^5.4 || ^7.0 || ^8.0"
   },
