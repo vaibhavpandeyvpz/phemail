@@ -108,7 +108,7 @@ class MessageParser implements MessageParserInterface
                 $lines->next();
                 if ($line === "--$boundary") {
                     $sub = $this->parseHeaders($lines, $sub = new MessagePart());
-                    $sub = $this->parseMessage($lines, $sub, $boundary);
+                    $sub = $this->parseMessage($lines, $sub, $boundary, $withSubMesssage, $withSubMesssage);
                     $part = $part->withPart($sub);
                 } elseif ($line === "--$boundary--") {
                     break;
