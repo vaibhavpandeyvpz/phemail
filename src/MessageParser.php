@@ -26,10 +26,10 @@ class MessageParser implements MessageParserInterface
 
     const REGEX_ATTRIBUTE = '~[;\s]+(?<name>[^=]+)=(?:["])?(?<value>[^;"]+)(?:["])?~';
 
-    /**
+    /*
      * {@inheritdoc}
      */
-    public function parse($payload)
+    public function parse($payload, $withSubMesssage=true)
     {
         if (is_string($payload)) {
             $iterator = new \ArrayIterator(file($payload, FILE_IGNORE_NEW_LINES));
@@ -41,7 +41,7 @@ class MessageParser implements MessageParserInterface
             throw new \InvalidArgumentException("\$payload must be either string, array or an instance of \\Iterator");
         }
         $message = $this->parseHeaders($iterator, $message = new MessagePart());
-        $message = $this->parseMessage($iterator, $message);
+        $message = $this->parseMessage($iterator, $message, null, $withSubMesssage);
         return $message;
     }
 
@@ -95,8 +95,8 @@ class MessageParser implements MessageParserInterface
     /**
      * @param \Iterator $lines
      * @param MessagePart $part
-     * @param boolean $withSubMesssage
-     * @param boolean $parseSubMessage
+     * @param bool $withSubMesssage
+     * @param bool $parseSubMessage
      * @return MessagePart
      */
     protected function parseMessage(\Iterator $lines, MessagePart $part, $boundary=null, $withSubMesssage=true, $parseSubMessage=true)
