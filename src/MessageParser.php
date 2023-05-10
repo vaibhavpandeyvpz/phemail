@@ -120,8 +120,13 @@ class MessageParser implements MessageParserInterface
             $sub = $this->parseHeaders($lines, $sub = new MessagePart());
             $sub = $this->parseMessage($lines, $sub, $boundary, $withSubMesssage, $withSubMesssage);
             return $part->withPart($sub);
-        } else
+        } else {
+            if ($part->isMessage()) {
+                $lines->next();
+            }
+            
             return $part->withContents($this->parseContent($lines, $boundary));
+        }
     }
 
     /**
