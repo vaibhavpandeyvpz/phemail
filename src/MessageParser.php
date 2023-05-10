@@ -95,9 +95,11 @@ class MessageParser implements MessageParserInterface
     /**
      * @param \Iterator $lines
      * @param MessagePart $part
+     * @param boolean $withSubMesssage
+     * @param boolean $parseSubMessage
      * @return MessagePart
      */
-    protected function parseMessage(\Iterator $lines, MessagePart $part, $boundary=null)
+    protected function parseMessage(\Iterator $lines, MessagePart $part, $boundary=null, $withSubMesssage=true, $parseSubMessage=true)
     {
         if ($part->isMultiPart()) {
             $boundary = $part->getHeaderAttribute("content-type", "boundary");
@@ -113,10 +115,10 @@ class MessageParser implements MessageParserInterface
                 }
             }
             return $part;
-        } else if ($part->isMessage()) {
+        } else if ($part->isMessage() && $parseSubMessage) {
             $lines->next();
             $sub = $this->parseHeaders($lines, $sub = new MessagePart());
-            $sub = $this->parseMessage($lines, $sub, $boundary);
+            $sub = $this->parseMessage($lines, $sub, $boundary, $withSubMesssage, $withSubMesssage);
             return $part->withPart($sub);
         } else
             return $part->withContents($this->parseContent($lines, $boundary));
