@@ -16,7 +16,6 @@ use Phemail\Message\MessagePart;
 
 /**
  * Class MessageParser
- * @package Phemail
  */
 class MessageParser implements MessageParserInterface
 {
@@ -29,7 +28,7 @@ class MessageParser implements MessageParserInterface
     /*
      * {@inheritdoc}
      */
-    public function parse($payload, $withSubMesssage=true)
+    public function parse($payload, $withSubMesssage = true)
     {
         if (is_string($payload)) {
             $iterator = new \ArrayIterator(file($payload, FILE_IGNORE_NEW_LINES));
@@ -38,16 +37,15 @@ class MessageParser implements MessageParserInterface
         } elseif ($payload instanceof \Iterator) {
             $iterator = $payload;
         } else {
-            throw new \InvalidArgumentException("\$payload must be either string, array or an instance of \\Iterator");
+            throw new \InvalidArgumentException('$payload must be either string, array or an instance of \\Iterator');
         }
         $message = $this->parseHeaders($iterator, $message = new MessagePart());
         $message = $this->parseMessage($iterator, $message, null, $withSubMesssage);
+
         return $message;
     }
 
     /**
-     * @param \Iterator $lines
-     * @param MessagePart $part
      * @return MessagePart
      */
     protected function parseHeaders(\Iterator $lines, MessagePart $part)
@@ -62,14 +60,15 @@ class MessageParser implements MessageParserInterface
                     $lines->next();
                     $line = $lines->current();
                     if (preg_match(self::REGEX_HEADER_LINE_EXTENDED, $line, $matches2)) {
-                        $matches['content'] .= " " . trim($matches2['content']);
+                        $matches['content'] .= ' '.trim($matches2['content']);
+
                         continue;
                     }
                     break;
                 }
                 $matches['name'] = strtolower($matches['name']);
                 $header = new Header();
-                
+
                 switch ($matches['name']) {
                     case 'content-disposition':
                     case 'content-type':
@@ -89,20 +88,19 @@ class MessageParser implements MessageParserInterface
                 $lines->next();
             }
         }
+
         return $part;
     }
 
     /**
-     * @param \Iterator $lines
-     * @param MessagePart $part
-     * @param bool $withSubMesssage
-     * @param bool $parseSubMessage
+     * @param  bool  $withSubMesssage
+     * @param  bool  $parseSubMessage
      * @return MessagePart
      */
-    protected function parseMessage(\Iterator $lines, MessagePart $part, $boundary=null, $withSubMesssage=true, $parseSubMessage=true)
+    protected function parseMessage(\Iterator $lines, MessagePart $part, $boundary = null, $withSubMesssage = true, $parseSubMessage = true)
     {
         if ($part->isMultiPart()) {
-            $boundary = $part->getHeaderAttribute("content-type", "boundary");
+            $boundary = $part->getHeaderAttribute('content-type', 'boundary');
             while ($lines->valid()) {
                 $line = trim($lines->current());
                 $lines->next();
@@ -114,38 +112,40 @@ class MessageParser implements MessageParserInterface
                     break;
                 }
             }
+
             return $part;
-        } else if ($part->isMessage() && $parseSubMessage) {
+        } elseif ($part->isMessage() && $parseSubMessage) {
             $lines->next();
             $sub = $this->parseHeaders($lines, $sub = new MessagePart());
             $sub = $this->parseMessage($lines, $sub, $boundary, $withSubMesssage, $withSubMesssage);
+
             return $part->withPart($sub);
         } else {
             if ($part->isMessage()) {
                 $lines->next();
             }
-            
+
             return $part->withContents($this->parseContent($lines, $boundary));
         }
     }
 
     /**
-     * @param \Iterator $lines
      * @return string
      */
     protected function parseContent(\Iterator $lines, $boundary)
     {
-        $contents = array();
+        $contents = [];
         while ($lines->valid()) {
             $line = $lines->current();
             $trimmed = trim($line);
-            if (is_null($boundary) || ($trimmed !== "--$boundary" && $trimmed !== "--$boundary--"))
+            if (is_null($boundary) || ($trimmed !== "--$boundary" && $trimmed !== "--$boundary--")) {
                 $contents[] = $line;
-            else
+            } else {
                 break;
+            }
             $lines->next();
         }
+
         return implode(PHP_EOL, $contents);
     }
-    
 }

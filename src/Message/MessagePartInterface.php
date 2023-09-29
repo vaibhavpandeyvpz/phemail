@@ -13,7 +13,6 @@ namespace Phemail\Message;
 
 /**
  * Interface MessagePartInterface
- * @package Phemail\Message
  */
 interface MessagePartInterface
 {
@@ -23,22 +22,22 @@ interface MessagePartInterface
     public function getHeaders();
 
     /**
-     * @param string $name
+     * @param  string  $name
      * @return HeaderInterface
      */
     public function getHeader($name);
 
     /**
-     * @param string $header
-     * @param string $attr
-     * @param string $default
+     * @param  string  $header
+     * @param  string  $attr
+     * @param  string  $default
      * @return string
      */
     public function getHeaderAttribute($header, $attr, $default = null);
 
     /**
-     * @param string $name
-     * @param string $default
+     * @param  string  $name
+     * @param  string  $default
      * @return string
      */
     public function getHeaderValue($name, $default = null);
@@ -47,12 +46,12 @@ interface MessagePartInterface
      * @return bool
      */
     public function isMultiPart();
-    
+
     /**
      * @return bool
      */
     public function isMessage();
-    
+
     /**
      * @return bool
      */
@@ -71,10 +70,10 @@ interface MessagePartInterface
     /**
      * @return MessagePartInterface[]
      */
-    public function getAttachments($recursive=False);
+    public function getAttachments($recursive = false);
 
     /**
      * @return MessagePartInterface[]
      */
-    public function getParts($recursive=False);
+    public function getParts($recursive = false);
 }

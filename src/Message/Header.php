@@ -13,7 +13,6 @@ namespace Phemail\Message;
 
 /**
  * Class Header
- * @package Phemail\Message
  */
 class Header implements HeaderInterface
 {
@@ -25,7 +24,7 @@ class Header implements HeaderInterface
     /**
      * @var string[]
      */
-    protected $attributes = array();
+    protected $attributes = [];
 
     /**
      * {@inheritdoc}
@@ -36,13 +35,14 @@ class Header implements HeaderInterface
     }
 
     /**
-     * @param string $value
+     * @param  string  $value
      * @return static
      */
     public function withValue($value)
     {
         $clone = clone $this;
         $clone->value = $value;
+
         return $clone;
     }
 
@@ -55,14 +55,15 @@ class Header implements HeaderInterface
     }
 
     /**
-     * @param string $name
-     * @param string $value
+     * @param  string  $name
+     * @param  string  $value
      * @return static
      */
     public function withAttribute($name, $value)
     {
         $clone = clone $this;
         $clone->attributes[$name] = $value;
+
         return $clone;
     }
 
