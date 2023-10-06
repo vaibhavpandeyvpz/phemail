@@ -13,7 +13,6 @@ namespace Phemail\Message;
 
 /**
  * Interface HeaderInterface
- * @package Phemail\Message
  */
 interface HeaderInterface
 {
@@ -28,7 +27,7 @@ interface HeaderInterface
     public function getAttributes();
 
     /**
-     * @param string $name
+     * @param  string  $name
      * @return string
      */
     public function getAttribute($name);

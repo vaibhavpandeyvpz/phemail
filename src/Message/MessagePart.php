@@ -13,14 +13,13 @@ namespace Phemail\Message;
 
 /**
  * Class MessagePart
- * @package Phemail\Message
  */
 class MessagePart implements MessagePartInterface
 {
     /**
      * @var HeaderInterface[]
      */
-    protected $headers = array();
+    protected $headers = [];
 
     /**
      * @var string
@@ -30,12 +29,12 @@ class MessagePart implements MessagePartInterface
     /**
      * @var MessagePartInterface[]
      */
-    protected $attachments = array();
+    protected $attachments = [];
 
     /**
      * @var MessagePartInterface[]
      */
-    protected $parts = array();
+    protected $parts = [];
 
     /**
      * {@inheritdoc}
@@ -62,6 +61,7 @@ class MessagePart implements MessagePartInterface
         if ($header && ($attribute = $header->getAttribute($attr))) {
             return $attribute;
         }
+
         return $default;
     }
 
@@ -71,6 +71,7 @@ class MessagePart implements MessagePartInterface
     public function getHeaderValue($name, $default = null)
     {
         $header = $this->getHeader($name);
+
         return $header ? $header->getValue() : $default;
     }
 
@@ -81,6 +82,7 @@ class MessagePart implements MessagePartInterface
     {
         $clone = clone $this;
         $clone->headers[$name] = $header;
+
         return $clone;
     }
 
@@ -99,7 +101,7 @@ class MessagePart implements MessagePartInterface
     {
         return stripos($this->getContentType(), 'multipart/') === 0;
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -125,30 +127,33 @@ class MessagePart implements MessagePartInterface
     }
 
     /**
-     * @param string $contents
+     * @param  string  $contents
      * @return static
      */
     public function withContents($contents)
     {
         $clone = clone $this;
         $clone->contents = $contents;
+
         return $clone;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getParts($recursive=False)
+    public function getParts($recursive = false)
     {
         $ret = $this->parts;
-        if ($recursive)
-            foreach($this->parts as $part)
+        if ($recursive) {
+            foreach ($this->parts as $part) {
                 $ret = array_merge($ret, $part->getParts(true));
+            }
+        }
+
         return $ret;
     }
 
     /**
-     * @param MessagePartInterface $part
      * @return static
      */
     public function withPart(MessagePartInterface $part)
@@ -159,19 +164,22 @@ class MessagePart implements MessagePartInterface
         } else {
             $clone->parts[] = $part;
         }
+
         return $clone;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getAttachments($recursive=False)
+    public function getAttachments($recursive = false)
     {
         $ret = $this->attachments;
-        if ($recursive)
-            foreach ($this->parts as $part)
+        if ($recursive) {
+            foreach ($this->parts as $part) {
                 $ret = array_merge($ret, $part->getAttachments(true));
+            }
+        }
+
         return $ret;
     }
-    
 }

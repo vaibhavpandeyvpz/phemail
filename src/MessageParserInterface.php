@@ -15,12 +15,11 @@ use Phemail\Message\MessagePartInterface;
 
 /**
  * Interface MessageParserInterface
- * @package Phemail
  */
 interface MessageParserInterface
 {
     /**
-     * @param string|array|\Iterator $payload
+     * @param  string|array|\Iterator  $payload
      * @return MessagePartInterface
      */
     public function parse($payload);
