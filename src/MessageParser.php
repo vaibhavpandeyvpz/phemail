@@ -19,7 +19,7 @@ use Phemail\Message\MessagePart;
  */
 class MessageParser implements MessageParserInterface
 {
-    const REGEX_HEADER_LINE = '~^(?![\s]+)(?<name>[^:]+):\s+(?<content>(?<value>[^;]+).*)$~';
+    const REGEX_HEADER_LINE = '~^(?![\s]+)(?<name>[^:]+):(\s+(?<content>(?<value>[^;]+).*))?$~';
 
     const REGEX_HEADER_LINE_EXTENDED = '~^\s+(?<content>.*)$~';
 
@@ -60,7 +60,7 @@ class MessageParser implements MessageParserInterface
                     $lines->next();
                     $line = $lines->current();
                     if (preg_match(self::REGEX_HEADER_LINE_EXTENDED, $line, $matches2)) {
-                        $matches['content'] .= ' '.trim($matches2['content']);
+                        $matches['content'] .= (array_key_exists('content', $matches) ? ' ' : '').trim($matches2['content']);
 
                         continue;
                     }
