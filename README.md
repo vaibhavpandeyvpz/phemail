@@ -1,7 +1,10 @@
 # vaibhavpandeyvpz/phemail
 MIME parser written in pure [PHP](http://www.php.net/) for parsing raw emails (.eml) files.
 
-[![Latest Version](https://img.shields.io/github/release/vaibhavpandeyvpz/phemail.svg?style=flat-square)](https://github.com/vaibhavpandeyvpz/phemail/releases) [![Build Status](https://img.shields.io/travis/vaibhavpandeyvpz/phemail/master.svg?style=flat-square)](https://travis-ci.org/vaibhavpandeyvpz/phemail) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/c6f2e35b-2349-452e-b696-17849c5695e0/mini.png)](https://insight.sensiolabs.com/projects/c6f2e35b-2349-452e-b696-17849c5695e0) [![](https://codeclimate.com/github/vaibhavpandeyvpz/phemail/badges/gpa.svg)](https://codeclimate.com/github/vaibhavpandeyvpz/phemail/badges) [![](https://codeclimate.com/github/vaibhavpandeyvpz/phemail/badges/coverage.svg)](https://codeclimate.com/github/vaibhavpandeyvpz/phemail/badges) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/vaibhavpandeyvpz/phemail/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/vaibhavpandeyvpz/phemail/?branch=master) [![Coverage Status](https://coveralls.io/repos/github/vaibhavpandeyvpz/phemail/badge.svg?branch=master)](https://coveralls.io/github/vaibhavpandeyvpz/phemail?branch=master) [![Total Downloads](https://img.shields.io/packagist/dt/vaibhavpandeyvpz/phemail.svg?style=flat-square)](https://packagist.org/packages/vaibhavpandeyvpz/phemail) [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Latest Version](https://img.shields.io/github/release/vaibhavpandeyvpz/phemail.svg?style=flat-square)](https://github.com/vaibhavpandeyvpz/phemail/releases)
+[![Coverage Status](https://coveralls.io/repos/github/vaibhavpandeyvpz/phemail/badge.svg?branch=master)](https://coveralls.io/github/vaibhavpandeyvpz/phemail?branch=master)
+[![Total Downloads](https://img.shields.io/packagist/dt/vaibhavpandeyvpz/phemail.svg?style=flat-square)](https://packagist.org/packages/vaibhavpandeyvpz/phemail)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
 Install
 ---
