@@ -59,9 +59,9 @@ class MessageParser implements MessageParserInterface
                 while ($lines->valid()) {
                     $lines->next();
                     $line = $lines->current();
+                    if (!isset($matches['content'])) $matches['content'] ="";
                     if (preg_match(self::REGEX_HEADER_LINE_EXTENDED, $line, $matches2)) {
                         $matches['content'] .= (array_key_exists('content', $matches) ? ' ' : '').trim($matches2['content']);
-
                         continue;
                     }
                     break;
