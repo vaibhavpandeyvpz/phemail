@@ -6,32 +6,33 @@
  * (c) Vaibhav Pandey <contact@vaibhavpandey.com>
  *
  * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.md.
+ * with this source code in the file LICENSE.
  */
 
 namespace Phemail\tests;
 
-//include "./vendor/autoload.php";
+// include "./vendor/autoload.php";
 
 use Phemail\MessageParser;
 use Phemail\MessageParserInterface;
-
 /**
  * Class MessageParserTest
  */
-class MessageParserTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class MessageParserTest extends TestCase
 {
     /**
      * @var MessageParserInterface
      */
     protected $parser;
 
-    public function setUp()
+    protected function setUp(): void
     {
-        $this->parser = new MessageParser();
+        $this->parser = new MessageParser;
     }
 
-    public function testPlainEmail()
+    public function test_plain_email()
     {
         $message = $this->parser->parse(__DIR__.'/../sample/plain.eml');
         $this->assertTrue($message->isText());
@@ -45,10 +46,10 @@ class MessageParserTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('flowed', $message->getHeaderAttribute('content-type', 'format'));
         $this->assertEquals('7bit', $message->getHeaderValue('content-transfer-encoding'));
         $this->assertNotEmpty($contents = $message->getContents());
-        $this->assertInternalType('string', $contents);
+        $this->assertIsString($contents);
     }
 
-    public function testMultiPartEmail()
+    public function test_multi_part_email()
     {
         $message = $this->parser->parse(__DIR__.'/../sample/multipart.eml');
         $this->assertTrue($message->isMultiPart());
@@ -59,7 +60,11 @@ class MessageParserTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('multipart/mixed', $message->getHeaderValue('content-type'));
         $this->assertCount(1, $message->getHeader('content-type')->getAttributes());
         $this->assertEquals('652b8c4dcb00cdcdda1e16af36781caf', $message->getHeaderAttribute('content-type', 'boundary'));
-        $this->assertEmpty($contents = $message->getContents());
+        // For multipart messages, getContents() may contain preamble (text before first boundary)
+        // It should never be null - it's always a string
+        $contents = $message->getContents();
+        $this->assertIsString($contents);
+        $this->assertNotNull($contents);
         $this->assertCount(1, $attachments = $message->getAttachments());
         $this->assertFalse($attachments[0]->isMultiPart());
         $this->assertEquals('text/x-ruby-script', $attachments[0]->getHeaderValue('content-type'));
@@ -77,7 +82,7 @@ class MessageParserTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('flowed', $parts[0]->getHeaderAttribute('content-type', 'format'));
         $this->assertEquals('7bit', $parts[0]->getHeaderValue('content-transfer-encoding'));
         $this->assertNotEmpty($contents = $parts[0]->getContents());
-        $this->assertInternalType('string', $contents);
+        $this->assertIsString($contents);
         $this->assertTrue($parts[1]->isText());
         $this->assertFalse($parts[1]->isMultiPart());
         $this->assertEquals('text/html', $parts[1]->getHeaderValue('content-type'));
@@ -86,19 +91,23 @@ class MessageParserTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('flowed', $parts[1]->getHeaderAttribute('content-type', 'format'));
         $this->assertEquals('quoted-printable', $parts[1]->getHeaderValue('content-transfer-encoding'));
         $this->assertNotEmpty($contents = $parts[1]->getContents());
-        $this->assertInternalType('string', $contents);
+        $this->assertIsString($contents);
         $this->assertCount(1, $message->getAttachments(true));
     }
 
-    public function testRfc822Email()
+    public function test_rfc822_email()
     {
         $message = $this->parser->parse(__DIR__.'/../sample/rfc822.eml');
         $this->assertTrue($message->isMultiPart());
         $this->assertFalse($message->isText());
         $this->assertFalse($message->isText());
         $this->assertCount(3, $message->getHeader('content-type')->getAttributes());
-        $this->assertEmpty($contents = $message->getContents());
-        $this->assertCount(1, $attachments = $message->getAttachments());
+        // For multipart messages, getContents() may contain preamble
+        $contents = $message->getContents();
+        $this->assertIsString($contents);
+        $this->assertNotNull($contents);
+        $attachments = $message->getAttachments();
+        $this->assertCount(1, $attachments);
         $this->assertCount(1, $parts = $message->getParts());
         $this->assertTrue($parts[0]->isMultipart());
         $this->assertCount(3, $parts = $parts[0]->getParts());

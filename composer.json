@@ -1,4 +1,29 @@
 {
+  "name": "vaibhavpandeyvpz/phemail",
+  "description": "A pure PHP MIME parser for parsing raw email files (.eml) with full support for multipart messages, nested structures, and RFC 2046 compliance.",
+  "type": "library",
+  "keywords": [
+    "mime",
+    "email",
+    "parser",
+    "eml",
+    "rfc822",
+    "rfc2046",
+    "multipart",
+    "attachment",
+    "message"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/vaibhavpandeyvpz/phemail",
+  "require": {
+    "php": "^8.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.0"
+  },
+  "suggest": {
+    "pear/mail": "For parsing email addresses from headers"
+  },
   "autoload": {
     "psr-4": {
       "Phemail\\": "src/"
@@ -8,20 +33,5 @@
     "psr-4": {
       "Phemail\\Tests\\": "tests/"
     }
-  },
-  "description": "MIME parser written in pure PHP for parsing raw emails (.eml) files.",
-  "homepage": "https://github.com/francescogabbrielli/phemail",
-  "keywords": ["mime", "email", "parser"],
-  "license": "MIT",
-  "name": "vaibhavpandeyvpz/phemail",
-  "require": {
-    "php": "^5.4 || ^7.0 || ^8.0"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^4.8"
-  },
-  "suggest": {
-    "pear/mail": ""
-  },
-  "type": "library"
+  }
 }

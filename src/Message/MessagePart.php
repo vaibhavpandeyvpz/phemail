@@ -6,7 +6,7 @@
  * (c) Vaibhav Pandey <contact@vaibhavpandey.com>
  *
  * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.md.
+ * with this source code in the file LICENSE.
  */
 
 namespace Phemail\Message;
@@ -24,7 +24,7 @@ class MessagePart implements MessagePartInterface
     /**
      * @var string
      */
-    protected $contents;
+    protected $contents = '';
 
     /**
      * @var MessagePartInterface[]
@@ -159,7 +159,10 @@ class MessagePart implements MessagePartInterface
     public function withPart(MessagePartInterface $part)
     {
         $clone = clone $this;
-        if ($part->getHeaderValue('content-disposition') === 'attachment') {
+        // Check if Content-Disposition starts with "attachment" (RFC 2183)
+        // Value can be "attachment" or "attachment; filename=..." or "attachment; ..."
+        $contentDisposition = $part->getHeaderValue('content-disposition', '');
+        if ($contentDisposition && stripos(trim($contentDisposition), 'attachment') === 0) {
             $clone->attachments[] = $part;
         } else {
             $clone->parts[] = $part;
