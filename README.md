@@ -2,6 +2,7 @@
 
 A pure PHP MIME parser for parsing raw email files (.eml) with full support for multipart messages, nested structures, and RFC 2046 compliance.
 
+[![Build Status](https://img.shields.io/github/actions/workflow/status/vaibhavpandeyvpz/phemail/tests.yml?branch=master&style=flat-square)](https://github.com/vaibhavpandeyvpz/phemail/actions)
 [![Latest Version](https://img.shields.io/packagist/v/vaibhavpandeyvpz/phemail.svg?style=flat-square)](https://packagist.org/packages/vaibhavpandeyvpz/phemail)
 [![Downloads](https://img.shields.io/packagist/dt/vaibhavpandeyvpz/phemail.svg?style=flat-square)](https://packagist.org/packages/vaibhavpandeyvpz/phemail)
 [![PHP Version](https://img.shields.io/packagist/php-v/vaibhavpandeyvpz/phemail.svg?style=flat-square)](https://packagist.org/packages/vaibhavpandeyvpz/phemail)
